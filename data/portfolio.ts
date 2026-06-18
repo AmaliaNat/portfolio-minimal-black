@@ -144,6 +144,6 @@ export const FOOTER_DATA: FOOTER_DATA = {
     socials: [
         { label: "GITHUB ↗", url: "https://github.com" },
         { label: "LINKEDIN ↗", url: "https://www.linkedin.com/in/amalia-natasha-binti-mohd-puat" },
-        { label: "WEBSITE ↗", url: "https://amalianatasha.com/" },
+        { label: "EMAIL ↗", url: "mailto:amaliantsha@gmail.com" }
     ],
 };
