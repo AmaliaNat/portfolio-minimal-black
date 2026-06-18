@@ -91,7 +91,7 @@ export default function Hero({ show }: HeroProps) {
 
                 <div className="border-t border-[#232427] pt-2 md:pt-4">
                     <h1 className="font-display text-[clamp(2.75rem,9vw,8.5rem)] text-primary font-normal tracking-tight uppercase flex flex-col">
-                        <span className="overflow-hidden block py-1 md:py-2">
+                        <span className="overflow-hidden block py-1 md:py-2 ">
                             <span className="hero-split-text inline-block translate-y-[100%] will-change-transform leading-[0.9]">
                                 {PROFILE_DATA.name}
                             </span>
