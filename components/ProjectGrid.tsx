@@ -33,11 +33,11 @@ export default function ProjectGrid({ items, onItemClick }: ProjectGridProps) {
                             <span className="font-bold text-white text-xl">{item.id}</span>
                         </div>
 
-                        <div className="flex flex-col items-end gap-0.5">
+                        <div className="flex flex-col items-end gap-0.5 text-xl">
                             <span className="text-white opacity-90 uppercase font-semibold">
                                 {item.client}
                             </span>
-                            <span className="opacity-50 text-[9px] group-hover:text-[#C4B3E6] transition-colors duration-300">
+                            <span className="opacity-50 group-hover:text-[#C4B3E6] transition-colors duration-300">
                                 {item.linkText} ↗
                             </span>
                         </div>

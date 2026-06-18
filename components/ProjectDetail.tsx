@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react"; // 1. Added explicit hook import
+import { useEffect } from "react";
 import { WorkItem } from "@/data/portfolio";
 
 interface ProjectDetailProps {
@@ -10,10 +10,9 @@ interface ProjectDetailProps {
 
 export default function ProjectDetail({ project, onClose }: ProjectDetailProps) {
 
-    // 2. Clear scrolling position immediately when a project mounts
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [project.id]); // Re-runs layout snap seamlessly if the user swaps projects directly
+    }, [project.id]);
 
     return (
         <div className="w-full min-h-screen bg-[#121314] text-white font-sans animate-fade-in overflow-y-auto pb-24">
@@ -42,7 +41,6 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                     </svg>
                     Back to Projects
                 </button>
-
             </div>
 
             {/* 2. Massive Brutalist Title */}
@@ -65,7 +63,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                                 Overview & Summary
                             </span>
                             <p className="font-sans text-xs uppercase tracking-wide leading-relaxed text-white/90 text-justify">
-                                {project.tagline || `${project.client} is an editorial design case study tracking interactive application layout systems.`}
+                                {project.overwiew}
                             </p>
                         </div>
 
@@ -74,29 +72,65 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                                 Production Manifest
                             </span>
                             <p className="font-sans text-xs uppercase tracking-wide leading-relaxed text-white/60 text-justify">
-                                Built and compiled around dynamic content pipelines designed to optimize responsive interface rendering speeds.
+                                {project.description}
                             </p>
                         </div>
                     </div>
 
                     {/* Receipt-style Meta Information Matrix */}
                     <div className="flex flex-col w-full">
-                        <div className="grid grid-cols-3 py-3 border-t border-[#A397B8]/20 text-[11px] font-mono uppercase tracking-wider">
+                        <div className="grid grid-cols-3 py-3 border-t border-[#A397B8]/20 text-[11px] font-mono uppercase tracking-wider items-center">
                             <span className="text-[#A397B8]/50 col-span-1">Index ID</span>
                             <span className="text-white col-span-2">{project.id}</span>
                         </div>
 
-                        <div className="grid grid-cols-3 py-3 border-t border-[#A397B8]/20 text-[11px] font-mono uppercase tracking-wider">
+                        <div className="grid grid-cols-3 py-3 border-t border-[#A397B8]/20 text-[11px] font-mono uppercase tracking-wider items-center">
                             <span className="text-[#A397B8]/50 col-span-1">Client</span>
                             <span className="text-white col-span-2 break-all">{project.client}</span>
                         </div>
 
-                        <div className="grid grid-cols-3 py-3 border-t border-[#A397B8]/20 text-[11px] font-mono uppercase tracking-wider">
+                        {/* NEW NODE: Assigned Production Role */}
+                        <div className="grid grid-cols-3 py-3 border-t border-[#A397B8]/20 text-[11px] font-mono uppercase tracking-wider items-center">
+                            <span className="text-[#A397B8]/50 col-span-1">Role</span>
+                            <span className="text-white col-span-2">{project.role}</span>
+                        </div>
+
+                        {/* NEW NODE: Dynamic Stacks Chip Matrix Wrapper */}
+                        <div className="grid grid-cols-3 py-3 border-t border-[#A397B8]/20 text-[11px] font-mono uppercase tracking-wider items-start">
+                            <span className="text-[#A397B8]/50 col-span-1 pt-0.5">Deployment</span>
+                            <div className="col-span-2 flex flex-wrap gap-1.5">
+                                {project.stacks.map((tech, index) => (
+                                    <span
+                                        key={index}
+                                        className="bg-[#1a1b1e] border border-white/10 px-2 py-0.5 rounded-sm text-[9px] text-[#C4B3E6] tracking-normal font-sans"
+                                    >
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-3 py-3 border-t border-[#A397B8]/20 text-[11px] font-mono uppercase tracking-wider items-center">
                             <span className="text-[#A397B8]/50 col-span-1">Action</span>
-                            <span className="text-[#C4B3E6] col-span-2 font-bold underline cursor-pointer">
-                                {project.linkText} ↗
+                            <span className="text-white/80 col-span-2">
+                                {project.linkText}
                             </span>
                         </div>
+
+                        {/* NEW NODE: Optional Conditional Alternative CTA Link Trigger */}
+                        {project.cta && (
+                            <div className="grid grid-cols-3 py-3 border-t border-[#A397B8]/20 text-[11px] font-mono uppercase tracking-wider items-center">
+                                <span className="text-[#C4B3E6]/60 col-span-1 font-semibold">Live Launch</span>
+                                <a
+                                    href={project.cta.src}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-[#C4B3E6] col-span-2 font-bold underline cursor-pointer hover:text-white transition-colors duration-300"
+                                >
+                                    {project.cta.label} ↗
+                                </a>
+                            </div>
+                        )}
 
                         <div className="border-t border-[#A397B8]/20 w-full" />
                     </div>

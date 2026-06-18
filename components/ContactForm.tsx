@@ -5,24 +5,46 @@ import { useState } from "react";
 export default function ContactForm() {
     const [formState, setFormState] = useState({ name: "", email: "", message: "" });
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        alert("TRANSMISSION COMPILED SUCCESSFULLY.");
-        setFormState({ name: "", email: "", message: "" });
-        setIsSubmitting(false);
+        setIsSuccess(false);
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formState),
+            });
+
+            if (response.ok) {
+                setIsSuccess(true);
+                setFormState({ name: "", email: "", message: "" });
+
+                setTimeout(() => setIsSuccess(false), 4000);
+            } else {
+                alert("TRANSMISSION FAILURE. PLEASE TRY AGAIN.");
+            }
+        } catch (error) {
+            console.error(error);
+            alert("NETWORK ERROR. DETAILED ENGINE EXCEPTION.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
-        <div className="w-full flex flex-col animate-fade-in overflow-visible text-white min-h-[700px]">
-            <div className="border-b border-white/30 py-3 flex flex-col justify-start items-start font-mono text-sm  tracking-widest gap-2 pb-6">
+        <div className="w-full flex flex-col animate-fade-in overflow-visible text-white md:min-h-[700px]">
+            <div className="border-b border-white/30 py-3 flex flex-col justify-start items-start font-mono text-sm tracking-widest gap-2 pb-6">
                 <h2 className="font-light text-[clamp(1.75rem,4vw,2.5rem)] tracking-[0.1em] leading-[1.2em] uppercase">
                     GET IN TOUCH
                 </h2>
                 <span className="opacity-60 font-sans font-light">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                    Send a direct dispatch to compile project requests or design inquiries.
                 </span>
             </div>
 
@@ -76,17 +98,22 @@ export default function ContactForm() {
                     </div>
                 </div>
 
-                <div className="w-full flex flex-col sm:flex-row justify-end items-start sm:items-center gap-4 pt-6">
+                <div className="w-full flex flex-col sm:flex-row justify-end items-start sm:items-center gap-6 pt-6">
+                    {isSuccess && (
+                        <p className="font-mono text-xs uppercase tracking-[0.15em] text-[#C4B3E6] animate-fade-in py-2">
+                            ✓ Message Sent.
+                        </p>
+                    )}
+
                     <button
                         type="submit"
                         disabled={isSubmitting}
                         className="w-full sm:w-auto border rounded-[5px] border-white text-white px-6 py-3.5 tracking-[0.2em] font-medium hover:bg-white hover:text-[#121314] active:scale-[0.98] transition-all duration-300 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed uppercase shrink-0 outline-none transform-gpu"
                     >
-                        {isSubmitting ? "Processing..." : "Message Sent!"}
+                        {isSubmitting ? "Processing..." : "Send Message"}
                     </button>
                 </div>
             </form>
-
         </div>
     );
 }

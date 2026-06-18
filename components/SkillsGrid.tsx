@@ -3,7 +3,7 @@ import { SKILLS_DATA } from '@/data/portfolio'
 
 export default function SkillsGrid() {
     return (
-        <div className="w-full flex flex-col animate-fade-in overflow-visible text-white min-h-[700px]">
+        <div className="w-full flex flex-col animate-fade-in overflow-visible text-white md:min-h-[700px]">
 
             {/* Packaging Top Header Panel */}
             <div className="border-b-1 border-white/30  py-3 flex justify-between items-center font-MONO text-m uppercase tracking-widest mb-6">
