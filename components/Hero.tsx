@@ -53,12 +53,17 @@ export default function Hero({ show }: HeroProps) {
     }, [show]);
 
     const TickerSegment = () => (
-        <div className="flex items-center gap-6 shrink-0 whitespace-nowrap pr-6">
+        <div className="flex items-center gap-6 shrink-0 whitespace-nowrap pr-6 py-3 select-none touch-none">
             {PROFILE_DATA.tickerTags.map((tag, idx) => (
                 <div key={idx} className="flex items-center gap-6">
-                    <span>{tag}</span>
+                    <span className="text-xs md:text-sm uppercase tracking-[0.2em]">
+                        {tag}
+                    </span>
                     {(idx < PROFILE_DATA.tickerTags.length || idx === PROFILE_DATA.tickerTags.length - 1) && (
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#E2D9F3] opacity-60 inline-block shrink-0 mx-1" />
+                        <span
+                            className="w-1.5 h-1.5 rounded-full bg-[#E2D9F3] opacity-60 inline-block shrink-0 mx-1"
+                            aria-hidden="true"
+                        />
                     )}
                 </div>
             ))}
@@ -66,11 +71,15 @@ export default function Hero({ show }: HeroProps) {
     );
 
     return (
-        <section ref={containerRef} className="relative w-full bg-[#121314] text-[#E2D9F3] overflow-hidden select-none">
-            <div className="w-full mx-auto py-8 md:py-12 flex flex-col gap-2">
+        <section
+            ref={containerRef}
+            className="relative w-full bg-[#121314] text-[#E2D9F3] overflow-hidden select-none xl:max-w-[1200px] xl:mx-auto"
+        >
+            <div className="w-full px-4 sm:px-6 lg:px-8 py-6 md:py-12 flex flex-col gap-4 md:gap-6">
 
+                {/* Ticker Row */}
                 <div className="overflow-hidden w-full relative">
-                    <div className="hero-split-text translate-y-[100%] will-change-transform font-sans font-light text-xs md:text-sm uppercase tracking-[0.2em] opacity-80">
+                    <div className="hero-split-text translate-y-[100%] will-change-transform font-sans font-light opacity-80">
                         <div ref={tickerRef} className="flex w-max">
                             <TickerSegment />
                             <TickerSegment />
@@ -80,10 +89,10 @@ export default function Hero({ show }: HeroProps) {
                     </div>
                 </div>
 
-                <div className="border-t border-[#232427] sm:px-6 px-4 lg:px-8">
-                    <h1 className="font-display text-[clamp(4rem,12vw,10rem)] text-primary font-normal tracking-tight leading-none uppercase flex flex-col">
-                        <span className="overflow-hidden block leading-[185px]">
-                            <span className="hero-split-text inline-block translate-y-[100%] will-change-transform leading-[122px]">
+                <div className="border-t border-[#232427] pt-2 md:pt-4">
+                    <h1 className="font-display text-[clamp(2.75rem,10vw,8.5rem)] text-primary font-normal tracking-tight uppercase flex flex-col">
+                        <span className="overflow-hidden block py-1 md:py-2">
+                            <span className="hero-split-text inline-block translate-y-[100%] will-change-transform leading-[0.9]">
                                 {PROFILE_DATA.name}
                             </span>
                         </span>
@@ -95,14 +104,15 @@ export default function Hero({ show }: HeroProps) {
                     style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }}
                     className="relative w-full overflow-hidden rounded-sm bg-[#1A1B1D] will-change-[clip-path]"
                 >
-                    <div className="relative w-full aspect-[16/7] md:aspect-[21/7]">
+
+                    <div className="relative w-full aspect-[4/3] sm:aspect-[16/7] md:aspect-[21/7]">
                         <Image
                             ref={imageRef}
                             src={PROFILE_DATA.heroImage.src}
                             alt={PROFILE_DATA.heroImage.alt}
                             fill
                             priority
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                            sizes="(max-width: 1200px) 100vw, 1200px"
                             className="object-cover object-center filter brightness-[0.85] will-change-transform"
                         />
                     </div>

@@ -42,12 +42,12 @@ export default function Home() {
       {!isLoaded && <Preloader onComplete={handlePreloaderComplete} />}
 
       <main
-        className={`w-full min-h-screen bg-[#121314] overflow-x-hidden flex flex-col transition-opacity duration-500 ${isLoaded ? "opacity-100" : "opacity-0 pointer-events-none"
+        className={`w-full min-h-screen bg-[#121314]    overflow-x-hidden flex flex-col transition-opacity duration-500 ${isLoaded ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
       >
         <Hero show={isLoaded} />
 
-        <section className="w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 md:pb-24 grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 border-t border-[#232427] py-10 items-start">
+        <section className="w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 md:pb-24 grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 border-t border-[#232427] py-10 items-start  xl:max-w-[1200px]  xl:mx-auto">
           <SidebarNav
             links={NAV_LINKS}
             activeSection={activeSection}
