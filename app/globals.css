@@ -6,10 +6,18 @@
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
+  --font-rigraf: var(--font-rigraf);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --color-purple-50: #c4b3e6;
+  --color-gray-50: #f0f0ec;
+
+  --color-primary: var(--color-purple-200);
+  --color-body: var(--color-gray-50);
+
+  --tracking-tight: -2px;
 }
 
 @media (prefers-color-scheme: dark) {
