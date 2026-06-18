@@ -52,7 +52,7 @@ export default function SidebarNav({ links, activeSection, onSectionChange }: Si
 
     return (
 
-        <div className="w-full flex flex-col gap-4 pt-4 md:col-span-3 md:sticky md:top-8 md:pt-5 h-fit overflow-visible">
+        <div className="w-full flex flex-col gap-4 pt-4 md:col-span-4 md:sticky md:top-8 md:pt-5 h-fit overflow-visible">
             <div className="relative w-full overflow-visible">
                 <nav className="group/nav flex flex-col items-start md:items-center w-full overflow-x-auto overflow-y-hidden md:overflow-visible md:flex-col md:items-start md:gap-4 gap-2 scrollbar-none snap-x snap-mandatory">
                     {links.map((link) => {

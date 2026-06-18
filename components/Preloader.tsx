@@ -85,13 +85,12 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                     Amalia Natasha
                 </h2>
                 <p className="font-sans text-xs text-[#A397B8] opacity-60 leading-relaxed">
-                    Establishing dynamic layout vectors, pre-rendering graphic configurations, structural systems fully primed.
+                    its loaadingggg, pls wait..
                 </p>
             </div>
 
             <div className="preloader-item w-full flex justify-between items-end border-t border-[#232427] pt-6">
                 <div className="font-rigraf text-[11px] uppercase tracking-widest text-[#A397B8] opacity-50 flex flex-col gap-1">
-                    <span>Reexamining Human</span>
                     <span>All Rights Reserved 2026</span>
                 </div>
 

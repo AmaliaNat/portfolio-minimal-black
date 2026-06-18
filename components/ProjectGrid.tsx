@@ -8,7 +8,7 @@ interface ProjectGridProps {
 
 export default function ProjectGrid({ items, onItemClick }: ProjectGridProps) {
     return (
-        <div className="md:col-span-9 grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+        <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
             {items.map((item) => (
                 <button
                     key={item.id}

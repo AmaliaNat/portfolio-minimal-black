@@ -57,7 +57,7 @@ export default function Home() {
             }}
           />
 
-          <div className="md:col-span-9 w-full min-h-[60vh] flex flex-col justify-start overflow-visible">
+          <div className="md:col-span-8 w-full min-h-[60vh] flex flex-col justify-start overflow-visible">
             {(() => {
               switch (activeSection.toUpperCase()) {
                 case "SKILLS":
