@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { WorkItem } from "@/data/portfolio";
 
@@ -16,8 +18,7 @@ export default function ProjectGrid({ items, onItemClick }: ProjectGridProps) {
                     onClick={() => onItemClick(item)}
                     className="w-full text-left flex flex-col overflow-hidden group border border-transparent hover:border-[#342E42] transition-colors duration-300 cursor-pointer outline-none transform-gpu"
                 >
-                    {/* Main Showcase Canvas Thumbnail Frame */}
-                    <div className="relative w-full aspect-square overflow-hidden">
+                    <div className="relative w-full aspect-square overflow-hidden bg-[#1A1B1D]">
                         <Image
                             src={item.image}
                             alt={item.client}
@@ -27,18 +28,22 @@ export default function ProjectGrid({ items, onItemClick }: ProjectGridProps) {
                         />
                     </div>
 
-                    {/* Metadata Footer Block */}
-                    <div className="w-full py-2  flex justify-between items-center text-[10px] font-mono tracking-wider text-[#A397B8] border-t mt-[10px]">
+                    <div className="w-full py-3 flex justify-between items-baseline font-mono tracking-wider text-[#A397B8] border-t border-white/10 mt-[10px]">
                         <div className="flex items-center gap-2">
-                            <span className="font-bold text-white text-xl">{item.id}</span>
+                            <span className="font-bold text-white text-lg sm:text-xl">{item.id}</span>
                         </div>
 
-                        <div className="flex flex-col items-end gap-0.5 text-xl">
-                            <span className="text-white opacity-90 uppercase font-semibold">
+
+                        <div className="flex flex-col items-end gap-1 text-right">
+                            <span className="text-white opacity-90 uppercase font-semibold text-sm sm:text-base leading-none">
                                 {item.client}
                             </span>
-                            <span className="opacity-50 group-hover:text-[#C4B3E6] transition-colors duration-300">
-                                {item.linkText} ↗
+                            <span className="text-xs sm:text-sm opacity-50 group-hover:text-[#C4B3E6] transition-colors duration-300 flex items-center gap-1 leading-none">
+                                <span>{item.linkText}</span>
+
+                                <span className="inline-block select-none font-sans font-normal" style={{ fontVariantEmoji: "text" }}>
+                                    {"↗\uFE0E"}
+                                </span>
                             </span>
                         </div>
                     </div>

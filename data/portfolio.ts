@@ -142,8 +142,8 @@ export const FOOTER_DATA: FOOTER_DATA = {
         alt: "Amalia Natasha portrait",
     },
     socials: [
-        { label: "GITHUB ↗", url: "https://github.com" },
-        { label: "LINKEDIN ↗", url: "https://www.linkedin.com/in/amalia-natasha-binti-mohd-puat" },
-        { label: "EMAIL ↗", url: "mailto:amaliantsha@gmail.com" }
+        { label: "GITHUB ↗\uFE0E", url: "https://github.com" },
+        { label: "LINKEDIN ↗\uFE0E", url: "https://www.linkedin.com/in/amalia-natasha-binti-mohd-puat" },
+        { label: "EMAIL ↗\uFE0E", url: "mailto:amaliantsha@gmail.com" }
     ],
 };

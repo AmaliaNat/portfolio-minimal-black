@@ -127,7 +127,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                                     rel="noopener noreferrer"
                                     className="text-[#C4B3E6] col-span-2 font-bold underline cursor-pointer hover:text-white transition-colors duration-300"
                                 >
-                                    {project.cta.label} ↗
+                                    {project.cta.label} {"↗\uFE0E"}
                                 </a>
                             </div>
                         )}
